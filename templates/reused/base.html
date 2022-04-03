@@ -38,7 +38,7 @@
   <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <div class="header__inner">
-        <a class="navbar-brand" href="#">Ask guru</a>
+        <a class="navbar-brand" href="{% url "index" %}">Ask guru</a>
 
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
 
@@ -62,34 +62,12 @@
     <div class="container">
       <div class="row">
         <div class="col-9">
-          <h2 class="mt-5">Questions</h2>
-
-          {% for question in questions %}
-            {% include "reused/question.html" %}
-          {% endfor %}
-         
+          {% block content %}
+          {% endblock content %}
         </div>
         <div class="col-3 ">
-          <h2 class="mt-5">Popular Tags</h2>
-          <div class="row nowrap">
-            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 "> <a href="quesitoquesiton.htmln.html">Tag 1</a>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 "> <a href="quesitoquesiton.htmln.html">Tag 2</a>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12"> <a href="quesitoquesiton.htmln.html">Tag 3</a>
-            </div>
-          </div>
-
-          <h2 class="mt-5">Best members</h2>
-          <div class="row nowrap">
-            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 "> <a href="quesitoquesiton.htmln.html">Member 1</a>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 "> <a href="quesitoquesiton.htmln.html">Member 2</a>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12"> <a href="quesitoquesiton.htmln.html">Mem 3</a>
-            </div>
-          </div>
-
+          {% block right_content %}
+          {% endblock right_content %}
         </div>
       </div>
     </div>

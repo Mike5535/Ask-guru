@@ -4,7 +4,7 @@
         <img class="avatar-question" src="{% static "img/duck.png" %}" alt="">
     </div>
     <div class="col-10">
-        <h3><a href="#">{{question.title}}</a></h3>
+        <h3><a href="{% url "question" question.number %}">{{question.title}}</a></h3>
         <p>{{ question.text }}</p>
     </div>
 </div>

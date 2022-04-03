@@ -1,0 +1,22 @@
+{% extends "reused/base.html" %}
+{% load static %}
+{% block content %}
+    <h2 class="mt-5">Questions</h2>
+    {% include "reused/question.html" %}
+{% endblock content %}
+
+{% block right_content %}
+  <h2 class="mt-5">Popular Tags</h2>
+  <div class="row nowrap">
+    {% for tag in tags %}
+      {% include "reused/tag.html" %}
+    {% endfor %}
+  </div>
+
+  <h2 class="mt-5">Best members</h2>
+  <div class="row nowrap">
+    {% for best_member in best_members %}
+      {% include "reused/best_member.html" %}
+    {% endfor %}
+  </div>
+{% endblock right_content %}
