@@ -1,10 +1,10 @@
 {% load static %}
 <div class="row question">
     <div class="col-2">
-        <img class="avatar-question" src="{% static "img/duck.png" %}" alt="">
+        <img class="img-fluid" src="{% static "img/duck.png" %}" alt="">
     </div>
     <div class="col-10">
         <h3><a href="{% url "question" question.number %}">{{question.title}}</a></h3>
-        <p>{{ question.text }}</p>
+        <p>{{ question.text }} <button class="btn bg-info btn-circle text-primiry rounded-circle" role="button" data-bs-toggle="button"><i class="fa fa-thumbs-up"></i></button></p></p>
     </div>
 </div>

@@ -3,21 +3,13 @@ main > .container {
 }
 
 .header__inner {
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   width: 100%;
   margin: 0 17%;
   white-space: nowrap;
-}
-
-ul{
-  margin-left: 10%;
-}
-
-li{
-  margin: 0 10%;
 }
 
 .name_s {
@@ -43,17 +35,21 @@ li{
 }
 
 .avatar-question {
-  width: 150px;
-  height: 150px;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
-.nowrap{
-  white-space: nowrap;
+.btn-circle {
+  padding:.10rem .3rem;
+  font-size:.850rem;
 }
 
-.nowrap div{
-  margin-right: 0.001%;
+.text-error {
+  color: red;
+  font-weight: bolder;
 }
+
+
 
 
 @media screen and (max-width: 750px){

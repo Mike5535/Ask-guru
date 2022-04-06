@@ -12,7 +12,7 @@
 
   <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
   <link rel="stylesheet" href="{% static "css/base.css" %}">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <style>
     .bd-placeholder-img {
@@ -30,7 +30,6 @@
     }
   </style>
 
-
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -42,16 +41,11 @@
 
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
 
-        <button class="btn btn-outline-success" type="submit">ASK!</button>
+        <a href="{% url "ask" %}"><button class="btn btn-outline-success" type="submit">ASK!</button></a>
 
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link text-primary" href="#"><u>log in</u></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-primary" href="#"><u>register</u></a>
-          </li>
-        </ul>
+        {% block authorisation %}
+        {% endblock authorisation %}
+
       </div>
     </nav>
   </header>
@@ -67,6 +61,19 @@
         </div>
         <div class="col-3 ">
           {% block right_content %}
+          <h2 class="mt-5">Popular Tags</h2>
+          <div class="d-flex flex-wrap">
+            {% for tag in tags %}
+            {% include "reused/tag.html" %}
+            {% endfor %}
+          </div>
+
+          <h2 class="mt-5">Best members</h2>
+          <div class="d-flex flex-wrap">
+            {% for best_member in best_members %}
+            {% include "reused/best_member.html" %}
+            {% endfor %}
+          </div>
           {% endblock right_content %}
         </div>
       </div>
