@@ -1,0 +1,46 @@
+{% extends "reused/base.html" %}
+{% load static %}
+{% block authorisation %}
+  {% include "reused/no_authoritheted.html" %}
+{% endblock authorisation %}
+{% block content %}
+<h2 class="mx-5 mt-4">{{tag}}</h2>
+  {% for question in questions %}
+    {% include "reused/question.html" %}
+  {% endfor %}
+  <nav aria-label="Page navigation example">
+    <ul class="pagination mx-3">
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Previous</span>
+        </a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Next</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+{% endblock content %}
+
+{% block right_content %}
+  <h2 class="mt-5">Popular Tags</h2>
+  <div class="row nowrap">
+    {% for tag in tags %}
+      {% include "reused/tag.html" %}
+    {% endfor %}
+  </div>
+
+  <h2 class="mt-5">Best members</h2>
+  <div class="row nowrap">
+    {% for best_member in best_members %}
+      {% include "reused/best_member.html" %}
+    {% endfor %}
+  </div>
+{% endblock right_content %}

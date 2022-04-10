@@ -53,7 +53,7 @@ main > .container {
 
 
 @media screen and (max-width: 750px){
-    .header__inner input,.btn{display:none}
+    .header__inner form{display:none}
 };
 
 

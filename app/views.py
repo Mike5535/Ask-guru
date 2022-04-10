@@ -12,7 +12,6 @@ QUESTIONS = [
 TAGS = [
     {
         "name": f"Tag №{i}",
-        "ref": f"questions.tag{i}",
     } for i in range(10)
 ]
 
@@ -36,7 +35,11 @@ def login(request):
     return render(request, "login.html", {"tags": TAGS,"best_members": BEST_MEMBERS})  
 
 def register(request):
-    return render(request, "register.html", {"tags": TAGS,"best_members": BEST_MEMBERS})  
+    return render(request, "register.html", {"tags": TAGS,"best_members": BEST_MEMBERS})
+
+def tag_question(request, string: str):
+    return render(request, "tag_questions.html", {"questions": QUESTIONS,"tag": string,"tags": TAGS,"best_members": BEST_MEMBERS})    
+      
 
 def question(request, i: int):
     return render(request, "page_question.html", {"question": QUESTIONS[i],"tags": TAGS,"best_members": BEST_MEMBERS})    

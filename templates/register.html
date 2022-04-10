@@ -4,37 +4,37 @@
   {% include "reused/no_authoritheted.html" %}
 {% endblock authorisation %}
 {% block content %}
-  <h2 class="mt-5">Log In</h2>
+  <h2 class="mt-5">Register</h2>
   <p class="text-danger "><u><b>Sorry, wrong password!</b></u></p>
   <form>
     <div class="form-group row my-4">
       <label for="colFormLabel" class="col-sm-2 col-form-label">Login</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" id="colFormLabel" placeholder="">
+        <input type="text" maxlength="100" class="form-control" id="colFormLabel" placeholder="">
       </div>
     </div>
     <div class="form-group row my-4">
       <label for="colFormLabel" class="col-sm-2 col-form-label">Email</label>
       <div class="col-sm-9">
-        <input type="email" class="form-control" id="colFormLabel" placeholder="">
+        <input type="email" maxlength="100" class="form-control" id="colFormLabel" placeholder="">
       </div>
     </div>
     <div class="form-group row my-4">
       <label for="colFormLabel" class="col-sm-2 col-form-label">Nickname</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" id="colFormLabel" placeholder="">
+        <input type="text" maxlength="100" class="form-control" id="colFormLabel" placeholder="">
       </div>
     </div>
     <div class="form-group row my-4">
       <label for="colFormLabel" class="col-sm-2 col-form-label">Password</label>
       <div class="col-sm-9">
-        <input type="password" class="form-control" id="colFormLabel" placeholder="">
+        <input type="password" maxlength="100" class="form-control" id="colFormLabel" placeholder="">
       </div>
     </div>
     <div class="form-group row my-4">
       <label for="colFormLabel" class="col-sm-2 col-form-label">Repeat password</label>
       <div class="col-sm-9">
-        <input type="password" class="form-control" id="colFormLabel" placeholder="">
+        <input type="password" maxlength="100" class="form-control" id="colFormLabel" placeholder="">
       </div>
     </div>
     <div class="form-group row my-4">
@@ -42,7 +42,7 @@
       <div class="col-sm-2">
         <input type="file">
         <div class="my-5">
-          <button type="submit" class="btn-primary rounded">Log in!</button>
+          <button type="submit" class="btn-primary rounded">Register!</button>
         </div>
       </div>
     </div>
