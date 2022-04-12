@@ -1,7 +1,54 @@
 from django.db import models
-from django.core.urlresolvers import reverse
+from django.contrib.auth.models import User
 
-def get_absolute_url(self):
-        return reverse('detail', args=[str(self.slug)])
+class TagManager(models.Manager):
+        def questions_tag(self,):
+                return self.filter(tags)
 
-# Create your models here.
+class Tag(models.Model):
+        name = models.CharField(max_length=255)
+
+        def __str__(self):
+                return self.name
+
+class Question(models.Model):
+        name = models.CharField(max_length=255)
+        text = models.TextField()
+        author = models.ForeignKey(User, on_delete=models.PROTECT)
+        tags = models.ManyToManyField(Tag)
+
+        def __str__(self):
+                return self.name
+
+class Answer(models.Model):
+        question = models.ForeignKey(Question, on_delete=models.CASCADE)
+        text = models.TextField()
+        author = models.ForeignKey(User, on_delete=models.PROTECT)
+        STATUSES=[
+                ('r','Correct'),
+                ('w','Wrong'),
+        ]
+        correct = models.CharField(max_length=1,choices=STATUSES,blank=True,null=True)
+
+        def __str__(self):
+                return self.question.name
+
+class Profile(models.Model):
+        user = models.ForeignKey(User, on_delete=models.CASCADE)
+        avatar = models.ImageField(upload_to='images/')
+
+        def __str__(self):
+                return self.user.username
+
+class Like(models.Model):
+        user = models.ForeignKey(User, on_delete=models.CASCADE)
+        question = models.ForeignKey(Question, on_delete=models.CASCADE,blank=True,null=True) 
+        answer = models.ForeignKey(Answer, on_delete=models.CASCADE,blank=True,null=True) 
+        STATUSES=[
+                ('r','Correct'),
+                ('w','Wrong'),
+        ]
+        like = models.CharField(max_length=1,choices=STATUSES,blank=True,null=True)
+
+        def __str__(self):
+                return self.user.username

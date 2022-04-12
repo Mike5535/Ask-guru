@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger 
+from app import models
 # Create your views here.
 
 QUESTIONS = [
@@ -22,8 +24,22 @@ BEST_MEMBERS = [
     } for i in range(10)
 ]
 
+def paginate(objects_list, request, per_page=10):
+    page = request.GET.get('page')
+    paginator = Paginator(objects_list, per_page)
+    try:  
+        posts = paginator.page(page)  
+    except PageNotAnInteger:  
+        # Если страница не является целым числом, поставим первую страницу  
+        posts = paginator.page(1)  
+    except EmptyPage:  
+        # Если страница больше максимальной, доставить последнюю страницу результатов  
+        posts = paginator.page(paginator.num_pages)  
+    return   {'page': page, 'posts': posts}   
+      
 def index(request):
-    return render(request, "index.html", {"questions": QUESTIONS,"tags": TAGS,"best_members": BEST_MEMBERS})
+    paginate(QUESTIONS,request,20)
+    return render(request, "index.html", paginate(models.Question.objects.all(),request,3) | {"tags": TAGS,"best_members": BEST_MEMBERS})
 
 def ask(request):
     return render(request, "ask.html", {"tags": TAGS,"best_members": BEST_MEMBERS})    
@@ -39,7 +55,6 @@ def register(request):
 
 def tag_question(request, string: str):
     return render(request, "tag_questions.html", {"questions": QUESTIONS,"tag": string,"tags": TAGS,"best_members": BEST_MEMBERS})    
-      
 
 def question(request, i: int):
-    return render(request, "page_question.html", {"question": QUESTIONS[i],"tags": TAGS,"best_members": BEST_MEMBERS})    
+    return render(request, "page_question.html", paginate(models.Answer.objects.filter(question_id=i),request,3) | {"question": models.Question.objects.all()[i],"tags": TAGS,"best_members": BEST_MEMBERS})    
