@@ -29,5 +29,4 @@ urlpatterns = [
     path('register/', views.register, name="register"),
     path('tag/<str:string>/', views.tag_question, name="register"),
     path('questions/<int:i>/', views.question, name="question"),
-    path('questions/<int:i>/like/',views.like_button, name='like_button'),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)+static(settings.STATIC_URL, document_root=settings.STATIC_URL)
