@@ -40,15 +40,10 @@ class Profile(models.Model):
         def __str__(self):
                 return self.user.username
 
-class Like(models.Model):
-        user = models.ForeignKey(User, on_delete=models.CASCADE)
-        question = models.ForeignKey(Question, on_delete=models.CASCADE,blank=True,null=True) 
-        answer = models.ForeignKey(Answer, on_delete=models.CASCADE,blank=True,null=True) 
-        STATUSES=[
-                ('r','Correct'),
-                ('w','Wrong'),
-        ]
-        like = models.CharField(max_length=1,choices=STATUSES,blank=True,null=True)
-
-        def __str__(self):
-                return self.user.username
+class LikeButton(models.Model):
+    content=models.TextField(null=True)
+    likes=models.ManyToManyField(User,blank=True, related_name='likes')
+     
+    @property
+    def total_likes(self):
+        return self.likes.count() 

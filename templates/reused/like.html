@@ -1,0 +1,11 @@
+{% load static %}
+{% for content in contents %}
+  <!-- checkin if user has already liked the content or not -->
+    {% if content.id in already_liked %} 
+       <p>{{ content.content }}</p>
+        <a name="{{ content.id }}" style="font-size:48px;color: blue;" class="likin" id="co"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
+        {% else %}
+       <p> {{ content.content }} </p>
+        <a name="{{ content.id }}" style="font-size:48px;color: black;" class="likin" id="co"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
+    {% endif %}
+ {% endfor %}

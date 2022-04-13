@@ -18,6 +18,7 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import path
 from app import views
+from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,6 +27,7 @@ urlpatterns = [
     path('user/', views.user, name="user"),
     path('login/', views.login, name="login"),
     path('register/', views.register, name="register"),
-    path('tag/<str:string>', views.tag_question, name="register"),
-    path('questions/<int:i>', views.question, name="question"),
+    path('tag/<str:string>/', views.tag_question, name="register"),
+    path('questions/<int:i>/', views.question, name="question"),
+    path('questions/<int:i>/like/',views.like_button, name='like_button'),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)+static(settings.STATIC_URL, document_root=settings.STATIC_URL)
