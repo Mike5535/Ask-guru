@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="AskMe">
+    <meta name="author" content="Nikolay Merzlov">
+    <title>Ask guru</title>
+
+    <link rel="stylesheet" href="{% static "bootstrap-5.1.3-dist/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "custom-css/main.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<!-- NavBar -->
+{% include "include/navBar.html" %}
+
+<!-- Page content -->
+<main class="flex-shrink-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-9">
+                {% block content %}
+                {% endblock %}
+            </div>
+            <div class="col-3 rightColumn">
+                {% include "include/sidePannel.html" %}
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="/static/js/likeCounter.js"></script>
+
+</body>
+</html>

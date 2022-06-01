@@ -1,0 +1,9 @@
+{% load static %}
+<div id="popular tags">
+    <h2 class="mt-5"> Popular Tags</h2>
+    <div class="d-flex flex-wrap">
+    {% for tag in tags %}
+    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 "><a href="/questionsByTag/{{ tag }}">{{ tag }}</a></div>
+    {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,15 @@
+{% load static %}
+<div class="row questionBody">
+    <div class="col-2 questionLeftColumn">
+        <img class="img-fluid" src="../media/{{ answer.author.profile_image }}" alt="no">
+        {% include "include/reputation.html" with reputation=answer.reputation %}
+        <div class="form-group form-check correctBox">
+            <input type="checkbox" class="form-check-input" id="Correct 1">
+            <label class="form-check-label" for="Correct 1">Correct!</label>
+        </div>
+    </div>
+    <div class="col-7">
+        <p>{{ answer.text }}</p>
+    </div>
+
+</div>

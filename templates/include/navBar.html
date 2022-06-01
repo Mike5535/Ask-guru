@@ -1,0 +1,43 @@
+{% load static %}
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="header__inner">
+            <a class="navbar-brand" href="/">Ask guru</a>
+
+            <form class="header__inner mx-4">
+                <input class="form-control me-1" maxlength="200" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+
+            <a href="/ask/"><button class="btn btn-info">ASK!</button></a>
+            <div class="navbar-nav userPanel" id="userPanel">
+                {% if user.is_authenticated %}
+                <div class="mx-4 d-flex flex-nowrap align-items-center">
+                    <img class= avatar-question " src="{{ user.profile_image.url }}" alt="">
+                
+                    <div class="mx-3">
+                        <div class="">
+                            <p class="text-muted d-inline">{{ user.username }}</p>
+                        </div>
+                        <div class="d-flex">
+                            <div class="">
+                                <a class=" text-primary" role="button" href="/settings/"><u>settings</u></a>
+                            </div>
+                            <div class="mx-3">
+                                <a class="text-primary" role="button" href="/logout/"><u>log out</u></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="nav-item mx-2">
+                    <a class="nav-link text-primary" href="/login/"><u>log in</u></a>
+                </div>
+                <div class="nav-item">
+                    <a class="nav-link text-primary" href="/registration/"><u>register</u></a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+</header>

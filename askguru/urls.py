@@ -13,20 +13,27 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.conf.urls.static import static
-from django.conf import settings
 from django.contrib import admin
 from django.urls import path
 from app import views
-from django.contrib.auth.decorators import login_required
+
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index,name="index"),
-    path('ask/', views.ask,name="ask"),
-    path('user/', views.user, name="user"),
-    path('login/', views.login, name="login"),
-    path('register/', views.register, name="register"),
-    path('tag/<str:string>/', views.tag_question, name="register"),
-    path('questions/<int:i>/', views.question, name="question"),
-]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)+static(settings.STATIC_URL, document_root=settings.STATIC_URL)
+    path('', views.index),
+    path('questionsSort/<str:sort>', views.index),
+    path('ask/', views.ask),
+    path('login/', views.login),
+    path('settings/', views.settings),
+    path('registration/', views.registration),
+    path('answer/<int:id_question>', views.answer),
+    path('questionsByTag/<str:tag>', views.index),
+    path('logout/', views.logout),
+    path('vote/', views.vote, name='vote-view')
+]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns +=  static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

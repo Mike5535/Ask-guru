@@ -1,0 +1,44 @@
+{% extends "reused/base.html" %}
+{% load static %}
+{% block authorisation %}
+  {% include "reused/authoritheted.html" %}
+{% endblock authorisation %}
+{% block content %}
+  <h2 class="mt-5">Ask question</h2>
+  <form>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Question title</label>
+      <input type="email"  maxlength="100" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+      <textarea class="form-control"  maxlength="1000" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="questionTags" class="form-label">Tags</label>
+      <input type="text" maxlength="100" class="form-control" id="questionTags" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <button type="submit" class="btn btn-primary">ASK!</button>
+  </form>
+{% endblock content %}
+
+{% block right_content %}
+  <h2 class="mt-5">Popular Tags</h2>
+  <div class="row nowrap">
+    {% for tag in tags %}
+      {% include "reused/tag.html" %}
+    {% endfor %}
+  </div>
+
+  <h2 class="mt-5">Best members</h2>
+  <div class="row nowrap">
+    {% for best_member in best_members %}
+      {% include "reused/best_member.html" %}
+    {% endfor %}
+  </div>
+{% endblock right_content %}

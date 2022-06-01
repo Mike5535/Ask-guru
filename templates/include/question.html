@@ -1,0 +1,19 @@
+{% load static %}
+<div class="row questionBody">
+    <div class="col-3">
+        <img class="img-fluid" src="../media/{{ question.author.profile_image }}" alt="tmpUser_01">
+        {% include "include/reputation.html" with reputation=question.reputation question_id=question.id %}
+
+    </div>
+    <div class="col-9">
+        <h3><a href="/answer/{{ question.id }}">{{ question.title }}</a></h3>
+        <p>{{ question.text }}</p>
+        <div>
+            <a href="/answer/{{ question.id }}">Answers {{ question.get_count_answers }}</a>
+            <a>Tags </a>
+            {% for tag in question.get_tags %}
+                <a href="/questionsByTag/{{ tag }}">{{ tag }} </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>

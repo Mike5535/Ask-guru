@@ -1,42 +1,19 @@
-{% extends "reused/base.html" %}
-{% load static %}
-{% block authorisation %}
-  {% include "reused/no_authoritheted.html" %}
-{% endblock authorisation %}
+{% extends "include/base.html" %}
+{% load bootstrap4 %}
 {% block content %}
-  <h2 class="mt-5">Log In</h2>
-  <p class="text-danger "><u><b>Sorry, wrong password!</b></u></p>
-  <form>
-    <div class="form-group row my-4">
-      <label for="colFormLabel" class="col-sm-2 col-form-label">Login</label>
-      <div class="col-sm-9">
-        <input type="text" maxlength="100" class="form-control" id="colFormLabel" placeholder="">
-      </div>
-    </div>
-    <div class="form-group row my-4">
-      <label for="colFormLabel" class="col-sm-2 col-form-label">Email</label>
-      <div class="col-sm-9">
-        <input type="email" maxlength="100" class="form-control" id="colFormLabel" placeholder="">
-        <div class="my-4">
-          <button type="submit" class="btn-primary rounded">Log in!</button>
+
+    <h2 class="mt-5">Log in</h2>
+    <form action="/login/" method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <div>
+            <button type="submit" class="btn btn-outline-success mb-2 answerButton">Log in</button>
         </div>
-      </div>
+
+    </form>
+    <div class="row logInRow">
+        <div class="col-7 form-group answerBox">
+            <a href="/registration/">Create new account</a>
+        </div>
     </div>
-  </form>
-{% endblock content %}
-
-{% block right_content %}
-  <h2 class="mt-5">Popular Tags</h2>
-  <div class="row nowrap">
-    {% for tag in tags %}
-      {% include "reused/tag.html" %}
-    {% endfor %}
-  </div>
-
-  <h2 class="mt-5">Best members</h2>
-  <div class="row nowrap">
-    {% for best_member in best_members %}
-      {% include "reused/best_member.html" %}
-    {% endfor %}
-  </div>
-{% endblock right_content %}
+{% endblock %}

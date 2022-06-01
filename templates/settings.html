@@ -1,0 +1,16 @@
+{% extends "include/base.html" %}
+{% load bootstrap4 %}
+{% block content %}
+    <h2 class="mt-5">Settings</h2>
+
+    <form action="/settings/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <img src="{{ user.profile_image.url }}" width="200px" alt="profile_image">
+        <div class="col-7 form-group">
+            <button type="submit" class="btn btn-outline-success mb-2 answerButton">Save</button>
+        </div>
+
+    </form>
+
+{% endblock %}

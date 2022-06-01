@@ -1,0 +1,14 @@
+{% extends "include/base.html" %}
+{% load bootstrap4 %}
+{% block content %}
+    <h2 class="mt-5">Registration</h2>
+    <form action="/registration/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+
+        <div class="col-7 form-group">
+            <button type="submit" class="btn btn-outline-success mb-2 answerButton">Register</button>
+        </div>
+
+    </form>
+{% endblock %}

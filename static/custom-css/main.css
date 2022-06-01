@@ -1,0 +1,159 @@
+main > .container {
+    padding: 60px 15px 0;
+}
+
+
+.header__inner {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin: 0 17%;
+    white-space: nowrap;
+  }
+  
+  .name_s {
+    font-weight: bold;
+  }
+  
+  .tags{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .tags  a{
+    margin:0 5%;
+  }
+
+  
+  .avatar-question {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  
+  .btn-circle {
+    padding:.10rem .3rem;
+    font-size:.850rem;
+  }
+  
+  .text-error {
+    color: red;
+    font-weight: bolder;
+  }
+
+.questionBody {
+    border: 3px solid gray;
+    border-radius: 5px;
+    margin: 20px;
+    padding: 10px;
+}
+
+.questionLeftColumn{
+    height: 100%;
+}
+
+.questionAvatar {
+    width: 100%;
+    height: 100%;
+    margin: 2% 0;
+    border-radius: 40px;
+    align-self: center;
+}
+
+.mainQuestionBody {
+    border-bottom: 2px solid gray;
+    margin: 20px;
+    padding: 10px;
+}
+
+.userPanel {
+    margin: 0 5px;
+    align-items: center;
+    align-content: center;
+}
+
+.userPanel > a {
+    color: #ffffff;
+    align-self: center;
+}
+
+.userAvatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    margin: 1px;
+    align-self: center;
+}
+
+.buttonNavBar {
+    margin: 10px;
+}
+
+.rightColumn {
+    align-self: auto;
+    border-left: 5px black;
+}
+
+.popularTags > a {
+    font-size: 150%;
+}
+
+.bestMembers > div > a {
+    font-size: 150%;
+}
+
+.reputationCounter {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    font-size: 100%;
+    padding: 2px;
+}
+
+.reputationBox{
+    height: 25%;
+    width: 100%;
+    align-content: center;
+}
+
+.answerBox {
+    margin: 20px;
+}
+
+.newQuestionTitle {
+    margin: 20px;
+}
+
+.answerButton {
+    margin: 5px 0;
+}
+
+.answerTextArea {
+    resize: none;
+}
+
+.warningMessages {
+    color: #ff0000;
+}
+
+.logInRow > div {
+    margin: 25px 0;
+}
+
+.correctBox {
+    margin-top: 10px;
+}
+
+.paginationBlock {
+    border-top: 2px solid gray;
+    margin: 20px;
+    padding: 10px;
+}
+  
+  @media screen and (max-width: 800px){
+      .header__inner form{display:none}
+  };
+  

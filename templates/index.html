@@ -1,27 +1,15 @@
-{% extends "reused/base.html" %}
-{% load static %}
-{% block authorisation %}
-  {% include "reused/no_authoritheted.html" %}
-{% endblock authorisation %}
+{% extends "include/base.html" %}
 {% block content %}
-  {% for question in posts %}
-    {% include "reused/question.html" %}
-    {% include "reused/paginator.html" with page=posts %} 
-  {% endfor %}
-{% endblock content %}
-
-{% block right_content %}
-  <h2 class="mt-5">Popular Tags</h2>
-  <div class="row nowrap">
-    {% for tag in tags %}
-      {% include "reused/tag.html" %}
+    {% if tag != "" %}
+        <h2 class="mt-5">Tag: {{ tag }} ({{ tag.get_count_questions }})</h2>
+    {% else %}
+        <h2 class="mt-5">{{ header }}</h2>
+    {% endif %}
+    <h3 class="my-2">Filters:</h2>
+    <a href="/questionsSort/latest" class="btn btn-info buttonNavBar" role="button">latest questions</a>
+    <a href="/" class="btn btn-info buttonNavBar" role="button">popular questions</a>
+    {% for question in posts %}
+        {% include "include/question.html" %}
     {% endfor %}
-  </div>
-
-  <h2 class="mt-5">Best members</h2>
-  <div class="row nowrap">
-    {% for best_member in best_members %}
-      {% include "reused/best_member.html" %}
-    {% endfor %}
-  </div>
-{% endblock right_content %}
+    {% include "include/pagination.html" with page=posts %}
+{% endblock %}

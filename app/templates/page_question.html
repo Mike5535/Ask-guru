@@ -1,0 +1,29 @@
+{% extends "reused/base.html" %}
+{% load static %}
+{% block authorisation %}
+  {% include "reused/authoritheted.html" %}
+{% endblock authorisation %}
+{% block content %}
+<div class="row border-bottom ">
+  <div class="col-2">
+    <img class="mt-5 rounded-0 d-flex justify-content-center img-fluid " src="{% static "img/duck.png" %}" alt="">
+  </div>
+  <div class="col-10">
+    <h2 class="mt-5">{{question.name}}</h2>
+    <p>{{question.text}}
+      <button class="btn bg-info btn-circle text-primiry rounded-circle" role="button" data-bs-toggle="button"><i
+          class="fa fa-thumbs-up"></i></button>
+    </p>
+  </div>
+</div>
+  {% for answer in posts %}
+    {% include "reused/answer.html" %}
+  {% endfor %}
+<form class="border-top">
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label"> Enter your answer</label>
+    <textarea class="form-control" maxlength="1000" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Answer</button>
+</form>
+{% endblock content %}

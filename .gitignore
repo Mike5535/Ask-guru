@@ -105,6 +105,7 @@ celerybeat.pid
 .env
 env/
 venv
+test
 ENV/
 env.bak/
 venv.bak/
@@ -127,5 +128,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-#/db.sqlite3
 media
